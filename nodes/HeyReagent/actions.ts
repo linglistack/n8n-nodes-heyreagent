@@ -1,7 +1,4 @@
 // Written by scripts/generate.mjs from https://heyreagent.com/openapi.json (97 actions). Do not edit by hand: run the script again.
-// An action's wording keeps product names as their owners write them (LinkedIn, InMail, Sales Navigator), which the
-// sentence-case rule would turn into "linked in" and "in mail".
-/* eslint-disable n8n-nodes-base/node-param-operation-option-action-miscased */
 import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
 export const resourceOptions: INodePropertyOptions[] = [
@@ -66,7 +63,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Connect LinkedIn',
 				value: 'connect_linkedin',
-				action: 'Connect a LinkedIn account',
+				action: 'Connect an account',
 				description: 'Get a private link where you sign a LinkedIn account in',
 				routing: {
 					request: {
@@ -89,7 +86,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get Usage',
 				value: 'get_usage',
-				action: "Get today's usage and limits",
+				action: 'Get usage and limits for today',
 				description:
 					'Read how many of each LinkedIn action your account used today, and each daily limit',
 				routing: {
@@ -113,7 +110,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List LinkedIn Accounts',
 				value: 'list_linkedin_accounts',
-				action: 'List connected LinkedIn accounts',
+				action: 'List connected accounts',
 				description: 'List your connected LinkedIn accounts and whether each one works',
 				routing: {
 					request: {
@@ -136,7 +133,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Update LinkedIn Connection',
 				value: 'update_linkedin_connection',
-				action: 'Fix or update a LinkedIn connection',
+				action: 'Fix or update a connection',
 				description: 'Get a private link where you sign an existing account in again',
 				routing: {
 					request: {
@@ -293,7 +290,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get InMail Conversation',
 				value: 'get_inmail_conversation',
-				action: 'Get an InMail conversation',
+				action: 'Get an inmail conversation',
 				description: 'Read one InMail conversation',
 				routing: {
 					request: {
@@ -316,7 +313,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get InMail Credits',
 				value: 'get_inmail_credits',
-				action: 'Get InMail credits',
+				action: 'Get inmail credits',
 				description: 'Read how many InMail credits each of your accounts has left',
 				routing: {
 					request: {
@@ -339,7 +336,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List InMail',
 				value: 'list_inmail',
-				action: 'List InMail conversations',
+				action: 'List inmail conversations',
 				description: 'List your InMail conversations, or every conversation with one person',
 				routing: {
 					request: {
@@ -362,7 +359,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Sales Navigator Contracts',
 				value: 'list_sales_navigator_contracts',
-				action: 'List Sales Navigator contracts',
+				action: 'List sales navigator contracts',
 				description:
 					'List the Sales Navigator contracts each of your accounts can use, and which is active',
 				routing: {
@@ -386,7 +383,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Switch Sales Navigator Contract',
 				value: 'switch_sales_navigator_contract',
-				action: 'Switch Sales Navigator contract',
+				action: 'Switch sales navigator contract',
 				description: 'Make another Sales Navigator contract the active one on an account',
 				routing: {
 					request: {
@@ -1253,7 +1250,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get Job Applicant Resume',
 				value: 'get_job_applicant_resume',
-				action: "Download an applicant's resume",
+				action: 'Download the resume of an applicant',
 				description: "Download one applicant's resume",
 				routing: {
 					request: {
@@ -1299,7 +1296,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Job Applicants',
 				value: 'list_job_applicants',
-				action: "List a job posting's applicants",
+				action: 'List the applicants of a job posting',
 				description: 'List who applied to one of your job postings',
 				routing: {
 					request: {
@@ -2806,7 +2803,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get Chat Attendee Picture',
 				value: 'get_chat_attendee_picture',
-				action: "Download a participant's picture",
+				action: 'Download the picture of a participant',
 				description: "Download one participant's picture",
 				routing: {
 					request: {
@@ -2990,7 +2987,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Chat Messages',
 				value: 'list_chat_messages',
-				action: "List a chat's messages",
+				action: 'List the messages of a chat',
 				description: 'List the messages of one conversation, newest first',
 				routing: {
 					request: {
@@ -3152,7 +3149,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Resync Attendee Chats',
 				value: 'resync_attendee_chats',
-				action: 'Re-read my chats with one person',
+				action: 'Read again my chats with one person',
 				description: 'Read your conversations with one person from LinkedIn again',
 				routing: {
 					request: {
@@ -3175,7 +3172,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Resync Chat',
 				value: 'resync_chat',
-				action: "Re-read a chat's history",
+				action: 'Read again the history of a chat',
 				description: "Read one conversation's history from LinkedIn again, from its beginning",
 				routing: {
 					request: {
@@ -3246,7 +3243,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Set Chat Status',
 				value: 'set_chat_status',
-				action: 'Mark a chat read or muted on LinkedIn',
+				action: 'Mark a chat read or muted',
 				description: 'Mark one conversation read or unread, and mute or unmute it',
 				routing: {
 					request: {
@@ -3269,7 +3266,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Start Conversation',
 				value: 'start_conversation',
-				action: 'Start a conversation (InMail, group, company)',
+				action: 'Start a conversation',
 				description:
 					'Start a new conversation: an InMail, a message through Sales Navigator or Recruiter, a group, a company page, a job applicant',
 				routing: {
@@ -5521,7 +5518,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Withdraw Invitation',
 				value: 'withdraw_invitation',
-				action: 'Withdraw one sent invitation, now',
+				action: 'Withdraw one sent invitation now',
 				description: 'Take back one invitation you sent that is still unanswered, now',
 				routing: {
 					request: {
@@ -6303,7 +6300,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get Recent Posts',
 				value: 'get_recent_posts',
-				action: "Get someone's recent posts",
+				action: 'Get the recent posts of a person',
 				description: "Read one person's latest posts, through a shared account",
 				routing: {
 					request: {
@@ -6349,7 +6346,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Post Comments',
 				value: 'list_post_comments',
-				action: "List a post's comments",
+				action: 'List the comments of a post',
 				description: 'List the comments on one post, or the replies to one comment',
 				routing: {
 					request: {
@@ -6372,7 +6369,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Post Reactions',
 				value: 'list_post_reactions',
-				action: "List a post's reactions",
+				action: 'List the reactions of a post',
 				description: 'List who reacted to one post, or to one comment on it',
 				routing: {
 					request: {
@@ -6395,7 +6392,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Posts by Author',
 				value: 'list_posts_by_author',
-				action: "List a person's or company's posts",
+				action: 'List the posts of a person or company',
 				description: 'List the posts one person or one company page published, newest first',
 				routing: {
 					request: {
@@ -8135,7 +8132,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Get Hiring Project',
 				value: 'get_hiring_project',
-				action: 'Get a Recruiter hiring project',
+				action: 'Get a recruiter hiring project',
 				description: 'Read one Recruiter hiring project',
 				routing: {
 					request: {
@@ -8158,7 +8155,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'List Hiring Projects',
 				value: 'list_hiring_projects',
-				action: 'List Recruiter hiring projects',
+				action: 'List recruiter hiring projects',
 				description: 'List your Recruiter hiring projects',
 				routing: {
 					request: {
@@ -8181,7 +8178,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Move Recruiter Candidate',
 				value: 'move_recruiter_candidate',
-				action: 'Add or move a Recruiter candidate',
+				action: 'Add or move a recruiter candidate',
 				description:
 					"Put one person into a hiring project's pipeline, or move them to another stage",
 				routing: {
@@ -8205,7 +8202,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Reject Recruiter Applicant',
 				value: 'reject_recruiter_applicant',
-				action: 'Reject a Recruiter applicant',
+				action: 'Reject a recruiter applicant',
 				description: 'Reject one applicant in a hiring project, with a reason',
 				routing: {
 					request: {
@@ -8695,7 +8692,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Save Lead',
 				value: 'save_lead',
-				action: 'Save a Sales Navigator lead',
+				action: 'Save a sales navigator lead',
 				description: 'Save one person as a lead in your Sales Navigator',
 				routing: {
 					request: {
@@ -8795,7 +8792,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Count People Sales Navigator',
 				value: 'count_people_sales_navigator',
-				action: 'Count people (Sales Navigator)',
+				action: 'Count people in sales navigator',
 				description: 'Count how many people match a Sales Navigator search, without returning them',
 				routing: {
 					request: {
@@ -8818,7 +8815,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Find Decision Makers',
 				value: 'find_decision_makers',
-				action: 'Find decision-makers at a company',
+				action: 'Find decision makers at a company',
 				description:
 					'Find the people at one company by title, seniority and function, through a shared Sales Navigator seat',
 				routing: {
@@ -8937,7 +8934,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn',
 				value: 'search_linkedin',
-				action: 'Search LinkedIn with any filter',
+				action: 'Search with any filter',
 				description:
 					'Run a search from a results link copied out of LinkedIn, Sales Navigator or Recruiter',
 				routing: {
@@ -8961,7 +8958,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Companies',
 				value: 'search_linkedin_companies',
-				action: 'Search companies, every filter typed',
+				action: 'Search companies with every filter typed',
 				description:
 					'Search company pages on ordinary LinkedIn, with each LinkedIn filter as its own typed input',
 				routing: {
@@ -8985,7 +8982,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Jobs',
 				value: 'search_linkedin_jobs',
-				action: 'Search jobs, every filter typed',
+				action: 'Search jobs with every filter typed',
 				description:
 					'Search job listings on LinkedIn, with each LinkedIn filter as its own typed input',
 				routing: {
@@ -9009,7 +9006,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn People',
 				value: 'search_linkedin_people',
-				action: 'Search people, every filter typed',
+				action: 'Search people with every filter typed',
 				description:
 					'Search people on ordinary LinkedIn, with each LinkedIn filter as its own typed input',
 				routing: {
@@ -9033,7 +9030,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Posts',
 				value: 'search_linkedin_posts',
-				action: 'Search posts, every filter typed',
+				action: 'Search posts with every filter typed',
 				description: 'Search posts on LinkedIn, with each LinkedIn filter as its own typed input',
 				routing: {
 					request: {
@@ -9056,7 +9053,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Recruiter People',
 				value: 'search_linkedin_recruiter_people',
-				action: 'Search candidates in my Recruiter, every filter typed',
+				action: 'Search candidates in my recruiter with every filter typed',
 				description:
 					'Search candidates in Recruiter on your own seat, with each Recruiter filter as its own typed input',
 				routing: {
@@ -9080,7 +9077,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Sales Navigator Companies',
 				value: 'search_linkedin_sales_navigator_companies',
-				action: 'Search companies in my Sales Navigator, every filter typed',
+				action: 'Search companies in my sales navigator with every filter typed',
 				description:
 					'Search companies in Sales Navigator on your own seat, with each Sales Navigator filter as its own typed input',
 				routing: {
@@ -9104,7 +9101,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search LinkedIn Sales Navigator People',
 				value: 'search_linkedin_sales_navigator_people',
-				action: 'Search people in my Sales Navigator, every filter typed',
+				action: 'Search people in my sales navigator with every filter typed',
 				description:
 					'Search people in Sales Navigator on your own seat, with each Sales Navigator filter as its own typed input',
 				routing: {
@@ -9152,7 +9149,7 @@ export const actionProperties: INodeProperties[] = [
 			{
 				name: 'Search People Sales Navigator',
 				value: 'search_people_sales_navigator',
-				action: 'Search people (Sales Navigator)',
+				action: 'Search people in sales navigator',
 				description:
 					'Search people in Sales Navigator through a shared seat, by names of titles, places, industries and companies',
 				routing: {

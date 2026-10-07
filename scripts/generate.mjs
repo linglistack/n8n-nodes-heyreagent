@@ -43,6 +43,60 @@ function tidy(text) {
 }
 const firstSentence = (text) => tidy(String(text || '').split(/\n/)[0].split(/(?<=[.!?])\s+/)[0]);
 
+/**
+ * How an action is named in n8n's list of actions. n8n's package scanner wants plain sentence case there:
+ * one capital at the start, no apostrophes, hyphens, commas or brackets, and product names in lower case.
+ * The API's own summaries say "LinkedIn", "InMail" and "a post's comments", so those are worded again here.
+ * A summary the scanner would refuse and that has no wording here stops the script, so a new action is noticed.
+ */
+const ACTION_WORDING = {
+	connect_linkedin: 'Connect an account',
+	get_usage: 'Get usage and limits for today',
+	list_linkedin_accounts: 'List connected accounts',
+	update_linkedin_connection: 'Fix or update a connection',
+	get_inmail_conversation: 'Get an inmail conversation',
+	get_inmail_credits: 'Get inmail credits',
+	list_inmail: 'List inmail conversations',
+	list_sales_navigator_contracts: 'List sales navigator contracts',
+	switch_sales_navigator_contract: 'Switch sales navigator contract',
+	get_job_applicant_resume: 'Download the resume of an applicant',
+	list_job_applicants: 'List the applicants of a job posting',
+	get_chat_attendee_picture: 'Download the picture of a participant',
+	list_chat_messages: 'List the messages of a chat',
+	resync_attendee_chats: 'Read again my chats with one person',
+	resync_chat: 'Read again the history of a chat',
+	set_chat_status: 'Mark a chat read or muted',
+	start_conversation: 'Start a conversation',
+	withdraw_invitation: 'Withdraw one sent invitation now',
+	get_recent_posts: 'Get the recent posts of a person',
+	list_post_comments: 'List the comments of a post',
+	list_post_reactions: 'List the reactions of a post',
+	list_posts_by_author: 'List the posts of a person or company',
+	get_hiring_project: 'Get a recruiter hiring project',
+	list_hiring_projects: 'List recruiter hiring projects',
+	move_recruiter_candidate: 'Add or move a recruiter candidate',
+	reject_recruiter_applicant: 'Reject a recruiter applicant',
+	save_lead: 'Save a sales navigator lead',
+	count_people_sales_navigator: 'Count people in sales navigator',
+	find_decision_makers: 'Find decision makers at a company',
+	search_linkedin: 'Search with any filter',
+	search_linkedin_companies: 'Search companies with every filter typed',
+	search_linkedin_jobs: 'Search jobs with every filter typed',
+	search_linkedin_people: 'Search people with every filter typed',
+	search_linkedin_posts: 'Search posts with every filter typed',
+	search_linkedin_recruiter_people: 'Search candidates in my recruiter with every filter typed',
+	search_linkedin_sales_navigator_companies: 'Search companies in my sales navigator with every filter typed',
+	search_linkedin_sales_navigator_people: 'Search people in my sales navigator with every filter typed',
+	search_people_sales_navigator: 'Search people in sales navigator',
+};
+/** Plain sentence case, a little stricter than the scanner; words in capitals throughout (such as "I") pass, as they do there. */
+const plainSentence = (text) => /^[A-Z][a-z0-9]*( [a-z0-9]+)*$/.test(text.split(' ').filter((word) => word !== word.toUpperCase()).join(' '));
+function actionName(id, summary) {
+	const said = ACTION_WORDING[id] || tidy(summary) || title(id);
+	if (!plainSentence(said)) throw new Error(`The action "${id}" is called "${said}", which n8n's scanner refuses. Add a plain wording for it to ACTION_WORDING.`);
+	return said;
+}
+
 /** One input of an action as an n8n field that sends itself in the request body. */
 function field(key, schema, required) {
 	// n8n asks that a yes/no field says "Whether …"; the API's own words follow.
@@ -94,7 +148,7 @@ for (const [path, item] of Object.entries(spec.paths)) {
 	resources.get(value).operations.push({
 		id: action.operationId,
 		name: title(action.operationId),
-		action: tidy(action.summary) || title(action.operationId),
+		action: actionName(action.operationId, action.summary),
 		description: firstSentence(action.description) || tidy(action.summary),
 		path,
 		required: inputs.filter(([key]) => required.has(key)).map(([key, schema]) => field(key, schema, true)),
@@ -145,9 +199,6 @@ for (const resource of sorted) {
 
 const actions = sorted.reduce((sum, resource) => sum + resource.operations.length, 0);
 const file = `// Written by scripts/generate.mjs from ${SOURCE} (${actions} actions). Do not edit by hand: run the script again.
-// An action's wording keeps product names as their owners write them (LinkedIn, InMail, Sales Navigator), which the
-// sentence-case rule would turn into "linked in" and "in mail".
-/* eslint-disable n8n-nodes-base/node-param-operation-option-action-miscased */
 import type { INodeProperties, INodePropertyOptions } from 'n8n-workflow';
 
 export const resourceOptions: INodePropertyOptions[] = ${JSON.stringify(sorted.map(({ name, value }) => ({ name, value })), null, '\t')};
