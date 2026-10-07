@@ -7682,11 +7682,7 @@ export const actionProperties: INodeProperties[] = [
 		name: 'skillEndorsementId',
 		description: "The skill's endorsement ID (from the skills section of get_profile_details)",
 		type: 'number',
-		default: -9007199254740991,
-		typeOptions: {
-			minValue: -9007199254740991,
-			maxValue: 9007199254740991,
-		},
+		default: 0,
 		required: true,
 		routing: {
 			send: {

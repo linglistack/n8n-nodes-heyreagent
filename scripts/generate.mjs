@@ -115,10 +115,12 @@ function field(key, schema, required) {
 	} else if (schema.type === 'boolean') {
 		shape = { type: 'boolean', default: schema.default === true };
 	} else if (schema.type === 'number' || schema.type === 'integer') {
+		// A whole number with no limits of its own still comes with JavaScript's safe-integer range; that is not a limit to show.
+		const bound = (value) => typeof value === 'number' && Math.abs(value) < Number.MAX_SAFE_INTEGER;
 		const typeOptions = {};
-		if (typeof schema.minimum === 'number') typeOptions.minValue = schema.minimum;
-		if (typeof schema.maximum === 'number') typeOptions.maxValue = schema.maximum;
-		shape = { type: 'number', default: typeof schema.default === 'number' ? schema.default : (typeof schema.minimum === 'number' ? schema.minimum : 0), ...(Object.keys(typeOptions).length ? { typeOptions } : {}) };
+		if (bound(schema.minimum)) typeOptions.minValue = schema.minimum;
+		if (bound(schema.maximum)) typeOptions.maxValue = schema.maximum;
+		shape = { type: 'number', default: typeof schema.default === 'number' ? schema.default : (bound(schema.minimum) ? schema.minimum : 0), ...(Object.keys(typeOptions).length ? { typeOptions } : {}) };
 		// n8n keeps the name "limit" for its own paging, with a fixed default; this is the API's own input.
 		if (key === 'limit') { base.name = 'maxResults'; base.displayName = 'Max Results'; }
 	} else if (schema.type === 'array' && schema.items?.type === 'string' && !schema.items.enum) {

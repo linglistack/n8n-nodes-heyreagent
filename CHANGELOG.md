@@ -1,5 +1,9 @@
 # Changelog
 
+## Not released yet
+
+- A whole-number input with no limits of its own ("Skill Endorsement ID") starts at 0 and no longer shows JavaScript's largest safe integer as its limits.
+
 ## 0.1.3
 
 - A new node, or the node added as an AI agent's tool, starts on an action that only reads. Each resource's starting action is its first read-only one, and the node starts on Account.
