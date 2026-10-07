@@ -32,7 +32,8 @@ export class HeyReagent implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: resourceOptions,
-				default: 'message',
+				// A new node starts on Account, whose first action only reads and needs no inputs.
+				default: 'account',
 			},
 			...actionProperties,
 		],

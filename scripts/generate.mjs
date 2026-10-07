@@ -147,6 +147,7 @@ for (const [path, item] of Object.entries(spec.paths)) {
 	const inputs = Object.entries(body.properties || {});
 	resources.get(value).operations.push({
 		id: action.operationId,
+		changes: action['x-changes-something'] === true,
 		name: title(action.operationId),
 		action: actionName(action.operationId, action.summary),
 		description: firstSentence(action.description) || tidy(action.summary),
@@ -178,7 +179,8 @@ for (const resource of sorted) {
 				output: { postReceive: [{ type: 'rootProperty', properties: { property: 'result' } }] },
 			},
 		})),
-		default: resource.operations[0].id,
+		// What a new node starts on: an action that only reads, never the first in the alphabet (which can be a delete).
+		default: (resource.operations.find((operation) => !operation.changes) || resource.operations[0]).id,
 	});
 	for (const operation of resource.operations) {
 		const show = { resource: [resource.value], operation: [operation.id] };

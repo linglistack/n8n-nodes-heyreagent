@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-heyreagent",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "n8n community node for HeyReagent: work with your own LinkedIn account (messages, invitations, search, posts). Not affiliated with LinkedIn.",
   "license": "MIT",
   "homepage": "https://heyreagent.com/n8n-linkedin",

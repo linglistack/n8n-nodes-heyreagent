@@ -72,6 +72,7 @@ Each LinkedIn account has a daily limit for each kind of action; see [the limits
 
 ## Version history
 
+- **0.1.3**: a new node, or the node added as an AI agent's tool, now starts on an action that only reads (Account, usage and limits for today). Before, each resource started on its first action in the alphabet, which for messages was a delete.
 - **0.1.2**: the names of 38 actions in n8n's action list are in plain sentence case, as n8n's package scanner asks. Nothing else changed.
 - **0.1.1**: the same node, published from GitHub Actions with npm provenance, as n8n asks of verified nodes.
 - **0.1.0**: first release. Every action of the HeyReagent API, generated from its OpenAPI file by `scripts/generate.mjs`.

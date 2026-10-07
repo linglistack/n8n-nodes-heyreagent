@@ -154,7 +154,7 @@ export const actionProperties: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'connect_linkedin',
+		default: 'get_usage',
 	},
 	{
 		displayName: 'Additional Fields',
@@ -1386,7 +1386,7 @@ export const actionProperties: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'close_job_posting',
+		default: 'get_job_applicant',
 	},
 	{
 		displayName: 'Job ID',
@@ -3312,7 +3312,7 @@ export const actionProperties: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'delete_chat',
+		default: 'get_chat',
 	},
 	{
 		displayName: 'Chat ID',
@@ -6459,7 +6459,7 @@ export const actionProperties: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'comment_on_post',
+		default: 'get_post',
 	},
 	{
 		displayName: 'Post URL',
@@ -7655,7 +7655,7 @@ export const actionProperties: INodeProperties[] = [
 				},
 			},
 		],
-		default: 'endorse_skill',
+		default: 'get_my_profile',
 	},
 	{
 		displayName: 'Profile ID',
